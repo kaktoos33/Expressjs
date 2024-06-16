@@ -1,0 +1,15 @@
+{
+  "name": "expressjs",
+  "version": "1.0.0",
+  "description": "NodeJS BackEnd API",
+  "main": "server.js",
+  "scripts": {
+    "test": "test --coverage"
+  },
+  "keywords": [
+    "NodeJS",
+    "API"
+  ],
+  "author": "Mehdi Anoosheh",
+  "license": "UNLICENSED"
+}
