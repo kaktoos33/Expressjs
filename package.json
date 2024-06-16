@@ -4,12 +4,20 @@
   "description": "NodeJS BackEnd API",
   "main": "server.js",
   "scripts": {
-    "test": "test --coverage"
+    "test": "test --coverage",
+    "start": "node server"
   },
   "keywords": [
     "NodeJS",
     "API"
   ],
   "author": "Mehdi Anoosheh",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
