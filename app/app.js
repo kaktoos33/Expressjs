@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const userRouter = require("../router/userRouter")
 
 // use middleware to form our contract for incoming json payloads
 app.use(express.json());
@@ -45,5 +46,8 @@ app.use((error,req,res,next)=>{
 app.get("/",(req,res,next)=>{
     res.status(200).json({Message:'Server is up'});
 });
+
+// routers
+app.use('/users',userRouter);
 
 module.exports= app;
