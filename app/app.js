@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const userRouter = require("../router/userRouter")
+const userRouter = require("../router/userRouter");
+const { connect } = require("../db/db");
 
 // use middleware to form our contract for incoming json payloads
 app.use(express.json());
 
 // use middleware for our encoding 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // handle cors policy manually
 /* app.use((req,res,next)=>{
@@ -43,11 +44,11 @@ app.use((error,req,res,next)=>{
  */
 
 // health point or actuator
-app.get("/",(req,res,next)=>{
-    res.status(200).json({Message:'Server is up'});
+app.get("/", (req, res, next) => {
+    res.status(200).json({ Message: 'Server is up' });
 });
 
 // routers
-app.use('/users',userRouter);
+app.use('/users', userRouter);
 
-module.exports= app;
+module.exports = app;

@@ -156,3 +156,11 @@ router.get("/:id",(req,res,next)=>{
 module.exports = router;
 
 ```
+
+# MongoDB
+
+```shell
+npm i mongoose
+
+docker run -d --name mongodb -p 27017:27017 mongo:latest
+```
