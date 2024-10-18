@@ -164,3 +164,67 @@ npm i mongoose
 
 docker run -d --name mongodb -p 27017:27017 mongo:latest
 ```
+
+# DB
+
+```shell
+require('dotenv').config();
+const mongoose = require("mongoose");
+
+async function connect() {
+    await mongoose.connect(process.env.mongo).then(
+        () => {
+            console.log('/** ready to use. The `mongoose.connect()` promise resolves to mongoose instance. */ ');
+        },
+        err => { console.log('/** handle initial connection error */'); }
+    );
+
+    // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+}
+
+module.exports = { connect };
+```
+
+# usermodels
+
+```shell
+const mongoose = require("mongoose");
+
+const userSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    firstName: {
+        type: String,
+        requiered: true,
+    },
+    lastName: {
+        type: String,
+        requiered: true,
+    },
+    addres: {
+        type: String,
+        requiered: true,
+    },
+    city: {
+        type: String,
+        requiered: true,
+    },
+    state: {
+        type: String,
+        requiered: true,
+    },
+    email: {
+        type: String,
+        requiered: true,
+    },
+    zipCode: {
+        type: String,
+        requiered: true,
+    },
+    passWord: {
+        type: String,
+        requiered: true,
+    }
+});
+
+module.exports = mongoose.model('User', userSchema);
+```

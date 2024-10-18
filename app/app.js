@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const userRouter = require("../router/userRouter");
-const { connect } = require("../db/db");
+const { connect } = require('../db/db');
+
 
 // use middleware to form our contract for incoming json payloads
 app.use(express.json());
@@ -50,5 +51,5 @@ app.get("/", (req, res, next) => {
 
 // routers
 app.use('/users', userRouter);
-
+connect();
 module.exports = app;
