@@ -4,7 +4,7 @@
   "description": "NodeJS BackEnd API",
   "main": "server.js",
   "scripts": {
-    "test": "test --coverage",
+    "test": "jest --coverage",
     "start": "nodemon server",
     "devStart": "node server"
   },
