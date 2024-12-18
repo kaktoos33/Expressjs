@@ -228,3 +228,9 @@ const userSchema = mongoose.Schema({
 
 module.exports = mongoose.model('User', userSchema);
 ```
+
+# Bcrypt
+
+```shell
+npm i bcrypt
+```

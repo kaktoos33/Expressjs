@@ -5,6 +5,7 @@ const usermodel = require('../models/usermodel');
 
 // async function connect() {
 const connect = async () => {
+    mongoose.set('strictQuery', true);
     await mongoose.connect(process.env.mongo).then(
         () => {
             console.log('/** ready to use. The `mongoose.connect()` promise resolves to mongoose instance. */ ');
