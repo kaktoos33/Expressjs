@@ -234,3 +234,9 @@ module.exports = mongoose.model('User', userSchema);
 ```shell
 npm i bcrypt
 ```
+
+# json web token
+
+```shell
+$ npm install jsonwebtoken
+```

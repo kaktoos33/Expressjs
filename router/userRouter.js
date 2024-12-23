@@ -3,8 +3,9 @@ const { saveUser, findUser } = require("../db/db");
 const User = require('../models/usermodel');
 const bcrypt = require('bcrypt');
 const mongoose = require("mongoose");
-
+const errorTemplate = require('../templates/errorTemplate');
 const router = express.Router();
+const loginUser = require('../services/userService');
 
 router.post("/register", (req, res, next) => {
     findUser({ email: req.body.email })
@@ -28,7 +29,7 @@ router.post("/register", (req, res, next) => {
                                     .json({ message: "Successful registration", user: user });
                             })
                             .catch((err) => {
-
+                                errorTemplate(res, err);
                             });
 
                     }
@@ -36,20 +37,10 @@ router.post("/register", (req, res, next) => {
             }
         })
         .catch((err) => {
-            error: {
-                message: err.message;
-                status: err.status;
-            }
+            errorTemplate(res, err);
         });
-    // saveUser(newUser)
-    // res.status(200).json({
-    //     message: 'Server is up',
-    //     metadata: {
-    //         hostname: req.hostname,
-    //         method: req.method
-    //     }
 
-    // });
 });
 
+router.post("/login", loginUser);
 module.exports = router;
