@@ -5,7 +5,7 @@ const { saveUser, findUser } = require("../db/db");
 const errorTemplate = require("../templates/errorTemplate");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const registerUser = async (req, res) => {
+exports.registerUser = async (req, res) => {
     findUser({ email: req.body.email })
         .then((user) => {
             if (user) {
@@ -41,7 +41,7 @@ const registerUser = async (req, res) => {
         });
 };
 
-const loginUser = async (req, res) => {
+exports.loginUser = async (req, res) => {
     try {
         const loggedUser = await findUser({ email: req.body.email });
         if (!loggedUser) {
@@ -68,4 +68,4 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { loginUser, registerUser };
+// module.exports = { loginUser, registerUser };
