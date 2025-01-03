@@ -47,7 +47,7 @@ exports.loginUser = async (req, res) => {
         if (!loggedUser) {
             throw new Error('Authentication failed, unable to fine user');
         } else {
-            const result = bcrypt.compare(req.body.passWord, loggedUser.passWord);
+            const result = await bcrypt.compare(req.body.passWord, loggedUser.passWord);
             if (result) {
                 const token = jwt.sign({ user: loggedUser }, process.env.jwt_secret);
                 return res.status(201).json({
