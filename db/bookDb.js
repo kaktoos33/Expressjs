@@ -12,4 +12,7 @@ const findBook = async (obj, selectValues) => {
 const saveBook = async (newBook) => {
     return await newBook.save();
 };
-module.exports = { findBooks, findBook, saveBook };
+const updateBook = async (filter, update) => {
+    return await Book.updateOne(filter, update);
+};
+module.exports = { findBooks, findBook, saveBook, updateBook };

@@ -2,7 +2,7 @@ require('dotenv').config();
 const Book = require('../models/bookModel');
 const mongoose = require("mongoose");
 const errorTemplate = require('../templates/errorTemplate');
-const { findBooks, findBook, saveBook } = require('../db/bookDb');
+const { findBooks, findBook, saveBook, updateBook } = require('../db/bookDb');
 const messages = require('../messages/messages');
 const successTemplate = require('../templates/successTemplate');
 
@@ -71,6 +71,24 @@ exports.postBook = async (req, res) => {
         }
         else {
             throw new Error(messages.book_cataloged);
+        }
+    }
+    catch (err) {
+        errorTemplate(res, err, err.message);
+    }
+};
+
+exports.updateBook = async (req, res) => {
+    try {
+        console.log('update book is calling');
+        const foundBook = await findBook({ _id: req.body._id });
+        if (foundBook) {
+
+            const updated = await updateBook({ _id: foundBook._id }, req.body);
+            successTemplate(res, updated, messages.book_updated, 200);
+        }
+        else {
+            throw new Error(messages.book_not_found);
         }
     }
     catch (err) {
