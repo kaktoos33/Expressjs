@@ -1,5 +1,5 @@
 require('dotenv').config();
-const User = require('../models/usermodel');
+const User = require('../models/userModel');
 const mongoose = require("mongoose");
 const { saveUser, findUser } = require("../db/db");
 const errorTemplate = require("../templates/errorTemplate");

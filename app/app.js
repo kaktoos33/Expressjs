@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const userRouter = require("../router/userRouter");
+const bookRouter = require("../router/bookRouter");
 const { connect } = require('../db/db');
 
 
@@ -52,4 +53,5 @@ app.get("/", (req, res, next) => {
 // routers
 app.use('/users', userRouter);
 connect();
+app.use('/books', bookRouter);
 module.exports = app;

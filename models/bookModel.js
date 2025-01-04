@@ -2,38 +2,30 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    firstName: {
+    title: {
         type: String,
         requiered: true,
     },
-    lastName: {
+    author: {
         type: String,
         requiered: true,
     },
-    addres: {
+    ISBN: {
         type: String,
         requiered: true,
     },
-    city: {
+    numberOfPages: {
         type: String,
         requiered: true,
     },
-    state: {
-        type: String,
+    price: {
+        type: Number,
         requiered: true,
     },
-    email: {
-        type: String,
-        requiered: true,
-    },
-    zipCode: {
-        type: String,
-        requiered: true,
-    },
-    passWord: {
+    yearPublished: {
         type: String,
         requiered: true,
     }
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Book', userSchema);
