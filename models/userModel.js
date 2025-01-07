@@ -2,27 +2,36 @@ const mongoose = require("mongoose");
 
 const bookSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    title: {
+
+    firstName: {
         type: String,
         requiered: true,
     },
-    author: {
+    lastName: {
         type: String,
         requiered: true,
     },
-    ISBN: {
+    address: {
         type: String,
         requiered: true,
     },
-    numberOfPages: {
+    city: {
         type: String,
         requiered: true,
     },
-    price: {
-        type: Number,
+    state: {
+        type: String,
         requiered: true,
     },
-    yearPublished: {
+    email: {
+        type: String,
+        requiered: true,
+    },
+    zipCode: {
+        type: String,
+        requiered: true,
+    },
+    passWord: {
         type: String,
         requiered: true,
     }

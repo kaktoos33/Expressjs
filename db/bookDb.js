@@ -13,6 +13,9 @@ const saveBook = async (newBook) => {
     return await newBook.save();
 };
 const updateBook = async (filter, update) => {
-    return await Book.updateOne(filter, update);
+    return await Book.updateOne(filter, update).exec();
 };
-module.exports = { findBooks, findBook, saveBook, updateBook };
+const deleteBook = async (obj) => {
+    return await Book.deleteOne(obj).exec();
+};
+module.exports = { findBooks, findBook, saveBook, updateBook, deleteBook };

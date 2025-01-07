@@ -2,7 +2,7 @@ require('dotenv').config();
 const Book = require('../models/bookModel');
 const mongoose = require("mongoose");
 const errorTemplate = require('../templates/errorTemplate');
-const { findBooks, findBook, saveBook, updateBook } = require('../db/bookDb');
+const { findBooks, findBook, saveBook, updateBook, deleteBook } = require('../db/bookDb');
 const messages = require('../messages/messages');
 const successTemplate = require('../templates/successTemplate');
 
@@ -89,6 +89,23 @@ exports.updateBook = async (req, res) => {
         }
         else {
             throw new Error(messages.book_not_found);
+        }
+    }
+    catch (err) {
+        errorTemplate(res, err, err.message);
+    }
+};
+exports.deleteBook = async (req, res) => {
+    try {
+        console.log('delete book is calling');
+        const foundBook = await findBook({ _id: req.body._id });
+        if (foundBook) {
+
+            const deleted = await deleteBook({ _id: foundBook._id });
+            successTemplate(res, deleted, messages.book_updated, 200);
+        }
+        else {
+            throw new Error(messages.book_deleted);
         }
     }
     catch (err) {

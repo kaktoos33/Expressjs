@@ -13,8 +13,8 @@ exports.registerUser = async (req, res) => {
             }
             else {
                 const user = new User();
-                user._id = new mongoose.Types.ObjectId();
                 const newUser = Object.assign(user, req.body);
+                newUser._id = new mongoose.Types.ObjectId();
                 console.log(newUser);
                 bcrypt.hash(newUser.passWord, 10, (err, hash) => {
                     if (err) {

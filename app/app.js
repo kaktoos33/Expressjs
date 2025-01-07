@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const userRouter = require("../router/userRouter");
 const bookRouter = require("../router/bookRouter");
+const authorRouter = require("../router/authorRouter");
 const { connect } = require('../db/db');
 
 
@@ -54,4 +55,5 @@ app.get("/", (req, res, next) => {
 app.use('/users', userRouter);
 connect();
 app.use('/books', bookRouter);
+app.use('/authors', authorRouter);
 module.exports = app;
