@@ -5,6 +5,8 @@ const userRouter = require("../router/userRouter");
 const bookRouter = require("../router/bookRouter");
 const authorRouter = require("../router/authorRouter");
 const { connect } = require('../db/db');
+const swaggerUi = require('swagger-ui-express');
+const document = require('../config/swaggerOptions.json');
 
 
 // use middleware to form our contract for incoming json payloads
@@ -56,4 +58,5 @@ app.use('/users', userRouter);
 connect();
 app.use('/books', bookRouter);
 app.use('/authors', authorRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(document));
 module.exports = app;

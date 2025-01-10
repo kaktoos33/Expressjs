@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title":"Nodejs Documentation",
+        "version":"1.0.0",
+        "contact":{
+            "name":"Mehdi Anoosheh",
+            "email":"med.anooshe@gmail.com"
+        }
+    },
+    "servers":[
+        {
+            "description": "Local Server",
+            "url": "http://localhost:3001"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth":{
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth":[]
+        }
+    ],
+    "paths": {
+        "/register":{
+            "post":{
+                "tags": ["Users"],
+                "description": "Register user",
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "firstName":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
